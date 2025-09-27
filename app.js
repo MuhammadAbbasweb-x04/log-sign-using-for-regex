@@ -1,18 +1,19 @@
 
 
-let inputname = document.querySelector("#inputname");
-let inputemail = document.querySelector("#inputemail");
-let inputage = document.querySelector("#inputage");
-let inputnum = document.querySelector("#inputnum");
-
-const nameRegex = /^[A-Za-z\s]{2,50}$/;
-const emailRegex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
-const ageRegex = /^(1[01][0-9]|120|[1-9][0-9]?)$/;
-const phoneRegex = /^(\+?\d{1,3})?[-\s]?\d{10}$/;
+let username = document.querySelector("#username");
+let email = document.querySelector("email");
+let age = document.querySelector("#age");
+let phone = document.querySelector("#phone");
 
 
-function submit(){
-if(nameRegex.test(inputname.value) && emailRegex.test(inputemail.value) && ageRegex.test(inputage.value) && phoneRegex.test(inputnum.value)){
+const regexFullName = /^([A-Z][a-z]+)(\s[A-Z][a-z]+)*$/;
+const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const regexAge = /^(?:1[0-1][0-9]|12[0-9]|[1-9][0-9]?|0?[1-9])$/;
+const regexPhone = /^(?:\+?92\s?|0)?3\d{2}\s?\d{7}$/;
+
+
+function Submit(){
+if(regexFullName.test(username.value) && regexEmail.test(email.value) && regexAge.test(age.value) && regexPhone.test(phone.value)){
 return Swal.fire({
   title: "Good job!",
   text: "You clicked the button!",
@@ -20,7 +21,7 @@ return Swal.fire({
 });
 } 
 else{ 
-return   Swal.fire({
+return Swal.fire({
   icon: "error",
   title: "Oops...",
   text: "Something went wrong!",
